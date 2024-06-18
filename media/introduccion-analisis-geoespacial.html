@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introducción al análisis geoespacial</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="José Martínez" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Introducción al análisis geoespacial
+]
+.subtitle[
+## Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial
+]
+.author[
+### José Martínez
+]
+.institute[
+### Universidad Autónoma de Santo Domingo (UASD)
+]
+.date[
+### 2024-06-17 (updated: 2024-06-18)
+]
+
+---
+
+
+
+
+class: center, middle
+background-image: url(img/fondo.jpg)
+
+# Introducción al análisis geoespacial
+## Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial
+### *José Martínez*
+### Universidad Autónoma de Santo Domingo (UASD)
+#### 2024-06-17
+
+
+---
+
+# Introducción al análisis geoespacial
+
+---
+
+## Datos espaciales (o geespaciales) y espacio-temporales
+
+Los datos espaciales (o geoespaciales) y espacio-temporales **están en todas partes**. Se recogen de diversas fuentes y se presentan en múltiples formatos como televisión, periódicos, planificadores de rutas, pantallas de computadoras, dispositivos móviles y mapas en papel.
+
+## Desafíos en la creación de mapas
+
+Crear un mapa que se ajuste a su propósito sin distorsionar los datos subyacentes es un desafío. El análisis de datos espaciales va más allá de la simple creación y visualización de mapas, **pero necesita de las herramientas de la creación y visualización de mapas propiamente**.
+
+---
+
+## Análisis de datos geoespaciales o análisis geoespacial
+
+El análisis de datos espaciales **se ocupa de preguntas que no se responden directamente al observar los datos**. Estas preguntas se refieren a procesos hipotéticos que generan los datos observados.
+
+El análisis geoespacial es el proceso de **examinar datos geográficos y sus propiedades espaciales para descubrir patrones, relaciones y tendencias**.
+
+## Inferencia Estadística en procesos espaciales
+
+La **inferencia estadística para estos procesos espaciales es a menudo un desafío** (este es el desafío realmente), pero es necesaria para extraer conclusiones sobre cuestiones de interés.
+
+---
+
+## Ejemplos de preguntas en análisis espacial
+
+- ¿El **patrón espacial de incidencias de enfermedades** sugiere que están agrupadas y están relacionadas con factores como la edad, la pobreza relativa o fuentes de contaminación?
+  
+- ¿**Qué parte de una área de estudio está contaminada** dado un número de muestras de suelo observadas?
+
+- ¿**Cuántas personas están expuestas a** altos niveles de humo negro o material particulado (e.g. PM10) y dónde viven, dados unos puntos de medición de calidad del aire dispersos?
+
+- ¿Los gobiernos tienden a comparar sus políticas con las de sus vecinos, o actúan de manera independiente?
+
+---
+
+# Componentes del análisis geoespacial
+
+1. Datos geoespaciales
+2. Herramientas y técnicas
+3. Métodos de análisis
+
+## Datos espaciales
+
+- Datos con referencia geográfica (coordenadas).
+- Ejemplos: datos de censos, datos meteorológicos, datos de uso del suelo, imágenes satelitales.
+
+---
+
+## Herramientas y técnicas. "Geo-" hasta en la sopa
+
+- **Cartografía**
+- **Mapa**
+- **Sistemas de información geográfica (SIG)**
+- **Geomática**
+- **Geoprocesamiento**
+- **Geocomputación**
+- **Teledetección**
+- **Fotogrametría**
+- **Observación de la Tierra**
+- **Tecnología geoespacial**
+- **Otras técnicas analíticas específicas**
+    1. Análisis de proximidad
+    2. Análisis de superficies
+    3. Análisis de redes
+    4. Estadísticas espaciales
+    5. **Modelado espacial**
+    6. **Geoestadística**
+---
+
+### Cartografía
+
+- Joly, 1988: arte de concebir, de trazar, de componer y de difundir los mapas
+
+### Mapa
+
+Joly, 1984: representación geométrica plana, simplificada y convencional, de toda la superficie terrestre o parte de ella, dentro de una relación de similitud  conveniente a la que llamamos escala
+
+---
+
+class: center, bottom
+&lt;div style="background-image: url(img/mapa-ejemplo.png); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"&gt;
+&lt;/div&gt;
+Fuente: IGU (1967)
+
+---
+
+
+
+### Sistemas de información geográfica (SIG):
+
+- Según Olaya (2020): un SIG es, fundamentalmente, una herramienta para trabajar con información georreferenciada. Hace pocos años se decía que un 70% de la información estaba georreferenciada.
+
+- Un SIG no es meramente un programa de cartografía por ordenador, ni un software de tipo CAD.
+
+---
+
+class: center, bottom
+&lt;div style="background-image: url(img/sig1.png); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"&gt;
+  Fuente: Olaya (2020)
+&lt;/div&gt;
+
+---
+
+class: center, bottom
+&lt;div style="background-image: url(img/sig2.png); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"&gt;
+  Fuente: Olaya (2020)
+&lt;/div&gt;
+
+---
+
+### Geomática
+
+Campo interdisciplinario que integra herramientas, técnicas y metodologías para la recopilación, almacenamiento, procesamiento, análisis, gestión y presentación de datos geoespaciales. Combina conocimientos de geografía, informática, ingeniería y ciencias de la tierra para abordar problemas relacionados con la ubicación y la información espacial.
+
+### Diferencias entre Geomática y SIG
+
+- **Geomática:**
+  - Integra herramientas geoespaciales como GPS, teledetección y cartografía.
+  - Presenta datos y procesos para el desarrollo sostenible.
+  - Análisis y gestión de recursos naturales y ambientales.
+  - Herramienta precisa y rentable para análisis espacial.
+
+- **SIG:**
+  - Geocodificación y visualización de datos geográficos en mapas.
+  - Combina capas de datos espaciales y sus atributos.
+  - Apoya la toma de decisiones y el desarrollo sostenible.
+  - Método eficiente pero costoso para gestión y análisis de datos.
+
+---
+
+### Geocomputación
+
+- Trata sobre el **uso de diferentes tipos de geodatos y el desarrollo de herramientas geoespaciales relevantes dentro de un enfoque 'científico'**.
+- Se remonta a la primera conferencia sobre el tema en 1996. No se considera "geografía cuantitativa", pues se enfoca en **aplicaciones "creativas y experimentales"** y el desarrollo de **nuevas herramientas y métodos**.
+
+### Geoprocesamiento
+
+Operaciones para manipular y analizar datos espaciales (buffer, intersección, unión, interpolación).
+
+---
+
+### Teledetección
+
+Ciencia y la técnica de **obtener información sobre objetos o áreas desde una cierta distancia**, típicamente utilizando sensores en plataformas aéreas o satelitales.
+
+### Fotogrametría
+
+Es la ciencia y técnica de obtener información precisa sobre objetos físicos y el entorno mediante el proceso de **registro, medición e interpretación de fotografías o imágenes satelitales**. Se utiliza principalmente para hacer mapas y medir la superficie terrestre y otras **características tridimensionales**.
+
+---
+
+### Observación de la Tierra (EO)
+
+El proceso amplio (abarcador) de **recopilar información sobre la superficie, las aguas y la atmósfera de la Tierra** mediante plataformas de teledetección basadas en tierra, aéreas y/o satelitales.
+
+### Tecnología geoespacial
+
+Conjunto de herramientas, técnicas y aplicaciones utilizadas para recolectar, analizar, gestionar y visualizar datos relacionados con la ubicación geográfica y las características de los objetos en la superficie terrestre. Se supone que abarca a la teledetección, los SIG, los sistemas GNSS, la cartografía propiamente. 
+
+---
+
+class: center, bottom
+background-image: url(img/GIS-evolution-and-future-trends.ppm)
+
+- Evolución de los SIG. Fuente: https://www.researchgate.net/figure/GIS-evolution-and-future-trends_fig1_282724755
+
+---
+
+class: center, bottom
+&lt;div style="background-image: url(img/13717_2020_255_Fig3_HTML.webp); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"&gt;
+  Misiones de EO de NASA. Fuente: https://ecologicalprocesses.springeropen.com/articles/10.1186/s13717-020-00255-4/figures/3
+&lt;/div&gt;
+
+---
+
+class: center, bottom
+&lt;div style="background-image: url(img/ESA-developed_Earth_observation_missions.jpg); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"&gt;
+  Misiones de EO de ESA. Fuente: https://www.esa.int/ESA_Multimedia/Images/2019/05/ESA-developed_Earth_observation_missions
+&lt;/div&gt;
+
+---
+
+## Conclusión, análisis geoespacial
+
+El análisis geoespacial examina datos geográficos para descubrir patrones, relaciones y tendencias. Utiliza herramientas avanzadas como SIG, teledetección y fotogrametría para abordar desafíos complejos y tomar decisiones informadas sobre la gestión del entorno, los recursos naturales, el desarrollo sostenible, las poblaciones y todos los fenómenos que ocurren en la superificie del planeta.
+
+---
+
+# Referencias destacadas
+
+Bivand, R. S., Pebesma, E., &amp; Gómez-Rubio, V. (2013). Applied Spatial Data Analysis with R. Springer New York. https://doi.org/10.1007/978-1-4614-7618-4
+
+Olaya, V. (2020). Sistemas de Información Geográfica. https://volaya.github.io/libro-sig/
+
+Lovelace, R., Nowosad, J., &amp; Muenchow, J. (2019). Geocomputation with R. Chapman and Hall/CRC. https://r.geocompx.org/
+
+Dorman, M., Graser A., Nowosad, J. &amp; Lovelace, R. (2019). Geocomputation with Python. Chapman and Hall/CRC. https://py.geocompx.org/
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

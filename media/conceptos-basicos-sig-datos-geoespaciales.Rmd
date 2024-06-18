@@ -1,0 +1,211 @@
+---
+title: "Conceptos básicos de SIG y datos geoespaciales"
+subtitle: "Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial"
+author: "José Martínez"
+institute: "Universidad Autónoma de Santo Domingo (UASD)"
+date: "2024-06-17 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+class: center, middle
+background-image: url(img/fondo.jpg)
+
+# Conceptos básicos de SIG y datos geoespaciales
+## Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial
+### *José Martínez*
+### Universidad Autónoma de Santo Domingo (UASD)
+#### 2024-06-17
+
+
+# Modelos de datos geoespaciales
+
+- Tradicionalmente, usábamos la distinción entre ráster y vectorial, pero actualmente, las cosas son algo más complicadas.
+
+- De todas formas, antes de ver los datos "desde el lado de los SIG", veamos algunos conceptos básicos de sistemas de referencia.
+
+---
+
+## Sistemas y marcos de referencia, sistemas de coordenadas, datum, proyección
+
+- Sistema de referencia. Definición teórica de un marco, donde se especifica cómo se determina el origen (centro de la Tierra), orientación (ejes), y las unidades (e.g. ITRS, WGS, SIRGAS).
+
+- Marco de referencia: realización práctica de un marco de referencia (e.g. WGS84, ITRF14). Es un conjunto de convenciones y normas que definen cómo se mide y se representa la posición en la superficie terrestre, considerando los puntos anteriores. Se realiza por medio de un conjunto de puntos en el planeta de posición y velocidad conocidas, observaciones geodésicas (GPS, VLBI SLR y DORIS) y actualización.
+
+---
+
+## Sistemas y marcos de referencia, sistemas de coordenadas, datum, proyección
+
+- Tipo o sistema de coordenadas: utiliza el marco de referencia para proporcionar un método específico para localizar puntos en la Tierra (e.g. geográficas, proyectadas).
+
+- Datum: proporciona la base matemática y física que el sistema de coordenadas utiliza para calcular posiciones precisas en el marco de referencia. En función de su definición
+
+- Hay de dos tipos básicos de datums:
+    - Locales: se definen mediante un elipsoide de referencia, su posición y un modelo de gravedad. Se intenta minimizar residuos haciendo pasar el elipsoide lo más del área de interés.
+    - Globales: mediante el semieje mayor del elipsoide, la constante de gravitación, el coeficiente de forma dinámica y la velocidad angular de la Tierra.
+
+---
+
+## Sistemas y marcos de referencia, sistemas de coordenadas, datum, proyección
+
+- En función del plano de interés a medir, los datums se dividen en:
+     - Horizontales, definen forma de la Tierra y una superficie de referencia desde la cual se miden las coordenadas horizontales (e.g. NAD27, WGS84 o "World Geodetic System 1984").
+     - Verticales, elevación o altitud relativa a una superficie de referencia, como el nivel medio del mar (e.g. EGM96 o "Earth Gravitational Model 1996").
+     
+- Proyección: correspondencia biunívoca entre los puntos de la superficie terrestre y los puntos de un plano llamado "plano de proyección"
+
+- Puedes aprender más, y hasta divertirte, aquí: ¿SIRGAS es una Pérdida de Tiempo? ¡Descubre por qué los Topógrafos No Pueden Vivir Sin Él!
+https://www.youtube.com/watch?v=-gpif5Ex4vM
+
+---
+
+class: center, bottom
+<div style="background-image: url(img/proyecciones.png); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+</div>
+Fuente: Olaya (2020)
+
+---
+
+## ¿Cómo ver un sistema de referencia en QGIS?
+
+- En QGIS, el término elegido es "Sistema de Referencia de Coordenadas", para elegir el sistema de coordenadas. Esto incluye, de manera implícita, elegir una proyección y un Datum. Normalmente, puedes cambiar "on-the-fly" el SRC.
+
+- Hay varias formas para acceder a la definición del SRC, pero la más sencilla es usando el botón que simula un globo en la esquina inferior derecha.
+
+- Elementos clave: ITRF, SIRGAS, WGS84, NAD27, EPSG:4326, EPSG:32619
+
+---
+
+# ¿Y en R?
+
+- El argumento a prestar atención comúnmente es `crs`.
+
+- Es habitual encontrar este argumento en funciones que utilizan objetos *simple features*, que son manejados por el paquete `sf`.
+
+- Comúnmente, para transformar datos, necesitamos utilizar una función para ello. En el paquete `sf`, la función es `st_transform`.
+
+---
+
+## Dato geoespacial, datos en los SIG
+
+---
+
+class: center, bottom
+<div style="background-image: url(img/capas.png); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+</div>
+Fuente: Olaya (2020)
+
+---
+
+class: center, bottom
+<div style="background-image: url(img/dimension-dato-geografico.jpg); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+</div>
+Fuente: Olaya (2020)
+
+---
+
+class: center, bottom
+<div style="background-image: url(img/primitivas-geometrica.jpg); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+</div>
+Fuente: Olaya (2020)
+
+---
+
+
+class: center, bottom
+<div style="background-image: url(img/representacion-raster-vectorial.jpg); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+</div>
+Fuente: Olaya (2020)
+
+---
+
+class: center, bottom
+<div style="background-image: url(img/onda-electromagnetica.jpg); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+</div>
+Fuente: Olaya (2020)
+
+---
+
+
+class: center, bottom
+<div style="background-image: url(img/espectro.jpg); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+</div>
+Fuente: Olaya (2020)
+
+---
+
+class: center, bottom
+<div style="background-image: url(img/distintas-resoluciones.jpg); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+</div>
+Fuente: Olaya (2020)
+
+---
+
+
+class: center, bottom
+<div style="background-image: url(img/resoluciones.jpeg); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+</div>
+
+---
+
+class: center, bottom
+<div style="background-image: url(img/gnss-diy-um980.jpg); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+</div>
+
+---
+
+# Tu turno
+
+Te dejo dos ejercicios de aula a continuación. Este es un buen momento para que uses el ChatGPT. Pregúntale cómo hacerlo. Para interactuar con dicha herramienta en el contexto de nuestro tema, te recomiendo lo siguiente:
+
+- Concisión. 
+
+- Agilidad. No pierdas tiempo intentando conseguir la mejor ortografía ni la mejor redacción. Las palabras clave, y un "cierto orden", son más importantes. 
+
+- Precisión en lo que se pregunta.
+
+- Mejor dar órdenes.
+
+## En QGIS
+
+- Carga fuentes de datos. Puedes usar las fuentes que encontrarás en el directorio `data` de este repo: https://github.com/maestria-geotel-master/material-de-apoyo. Vas a necesitar descargar los datos desde GitHub (no necesitas cuenta en GitHub para ello), colocarlo en tu PC y continuar.
+
+   - Realiza el ejercicio para una fuente vectorial de tu elección. Las que terminan en `.gpkg` son archivos de formato GeoPackage. También podrías considerar las que terminan en `.csv` como fuentes vectoriales, al menos en este caso.
+   - Haz lo mismo para una fuente ráster. Las que terminan en `.tif` son ráster.
+   - Si quieres usar fuentes tuyas, u otras que encuentres en línea y que sean de tu interés, sería perfecto.
+   - Explora su sistema de referencia de coordenadas en la pestaña "Información" y "Fuente" de las propiedades de la capa.
+   - Más detalles, en el aula.
+
+---
+
+## En QGIS (cont.)
+
+- Teniendo ambas fuentes cargadas, cambia el SRC global sobre la marcha (*on-the-fly*), sin transformar las fuentes propiamente. Determina si se notan cambios.
+
+- Intenta transformar una fuente de un SRC a otro. Con independencia de si es ráster o vectorial, esto lo podrás hacer en `Clic&nbsp;derecho&nbsp;a&nbsp;la capa>Exportar>Guardar&nbsp;objetos&nbsp;como`.
+
+---
+
+## En R
+
+
+---
+
+# Referencias destacadas
+
+Bivand, R. S., Pebesma, E., & Gómez-Rubio, V. (2013). Applied Spatial Data Analysis with R. Springer New York. https://doi.org/10.1007/978-1-4614-7618-4
+
+Olaya, V. (2020). Sistemas de Información Geográfica. https://volaya.github.io/libro-sig/
+
+Lovelace, R., Nowosad, J., & Muenchow, J. (2019). Geocomputation with R. Chapman and Hall/CRC. https://r.geocompx.org/
+
+Dorman, M., Graser A., Nowosad, J. & Lovelace, R. (2019). Geocomputation with Python. Chapman and Hall/CRC. https://py.geocompx.org/
