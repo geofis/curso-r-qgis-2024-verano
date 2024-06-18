@@ -175,6 +175,8 @@ Te dejo dos ejercicios de aula a continuación. Este es un buen momento para que
 
 - Mejor dar órdenes.
 
+---
+
 ## En QGIS
 
 - Carga fuentes de datos. Puedes usar las fuentes que encontrarás en el directorio `data` de este repo: https://github.com/maestria-geotel-master/material-de-apoyo. Vas a necesitar descargar los datos desde GitHub (no necesitas cuenta en GitHub para ello), colocarlo en tu PC y continuar.
