@@ -1,0 +1,127 @@
+---
+title: "Manipulación de datos geoespaciales con QGIS"
+subtitle: "Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial"
+author: "José Martínez"
+institute: "Universidad Autónoma de Santo Domingo (UASD)"
+date: "2024-06-17 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+class: center, middle
+background-image: url(img/fondo.jpg)
+
+# Manipulación de datos geoespaciales con QGIS
+## Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial
+### *José Martínez*
+### Universidad Autónoma de Santo Domingo (UASD)
+#### 2024-06-19
+
+---
+
+# Tu turno
+
+## Pide ayuda al ChatGPT
+
+Desde la siguiente diapositiva en adelante, verás varios ejercicios de aula. Este es un buen momento para que uses el ChatGPT. Pregúntale cómo hacerlo. Para interactuar con dicha herramienta en el contexto de nuestro tema, te recomiendo lo siguiente:
+
+- Concisión. 
+
+- Agilidad. No pierdas tiempo intentando conseguir la mejor ortografía ni la mejor redacción. Las palabras clave, y un "cierto orden", son más importantes. 
+
+- Precisión en lo que se pregunta.
+
+- Mejor dar órdenes.
+
+- Truco: pídele que te documente código informático, que te lo explique.
+
+---
+
+## La ventana de QGIS
+
+## <center>DEMO en el aula<center>
+
+- Elementos de la ventana.
+
+- Guardar proyectos. Capas y proyecto, diferéncialos.
+
+---
+
+## Ejercicios en QGIS
+
+- __Ejercicio 1. Carga fuentes de datos ráster y vectorial__. Puedes usar las fuentes que encontrarás en el directorio `data` del repositorio ["Material de apoyo de la asignatura "Análisis Espacial", Maestría en Geografía, Teledetección y Ciencias de la Información Geográfica"](https://github.com/maestria-geotel-master/material-de-apoyo). Vas a necesitar descargar los datos desde GitHub (no necesitas cuenta en GitHub para ello), colocarlo en tu PC y continuar.
+
+   - __Ejercicio 1.a. Carga una fuente de datos ráster__. Las que terminan en `.tif` son ráster. Por ejemplo, elige `MDE_SRTM_30m_Naranjal_Parra.tif` que se encuentra en el directorio `data`. Para descargarla, sigue estos pasos:
+      - Presiona sobre el nombre del archivo.
+      - Esto te llevará a otra página, dentro de GitHub, que intentará mostrarla ("renderizarla"). Como GitHub no muestra archivos `.tif` sólo verás el vínculo `View raw`; tienes tres opciones para descargarla, elige una:
+          - Presiona sobre el vínculo `View raw`.
+          - Presiona sobre el botón `Raw` que se encuentra justo encima.
+          - Presiona sobre el botón `Download raw file`, que es el que muestra una bandeja con una flecha apuntando hacia abajo.
+
+---
+
+## Ejercicios en QGIS (cont.)
+
+- __Ejercicio 1__ (cont). 
+
+   - __Ejercicio 1.b. Carga una fuente de datos vectorial__. Realiza el mismo ejercicio anterior para una fuente vectorial de tu elección. Las que terminan en `.gpkg` son archivos de formato GeoPackage, elige una de esas.
+   - __Ejercicio 1.c. Carga un archivo de texto delimitado__. En concreto carga un CSV (*comma separated values*), que normalmente tienen extensión `.csv`. Usa el siguiente archivo del repo fuente: `onamet_temp_anual.csv`. IMPORTANTE: cuando trabajes con CSV en QGIS, si tienes previsto usarlo a futuro, mi recomendación es que, antes de cerrar QGIS, lo conviertas a un formato nativo, por ejemplo, GeoPackage, con el que luego podrás hacer operaciones de edición avanzadas, o simplemente para cargarlo más fácilmente.
+   - __Ejercicio 1.d (opcional). Usa tus fuentes__. Si quieres usar fuentes tuyas, u otras que encuentres en línea y que sean de tu interés, sería perfecto.
+
+---
+
+## Ejercicios en QGIS (cont.)
+
+- __Ejercicio 2. Explora el SRC de capas__. Para cada fuente, la ráster y la vectorial, explora su sistema de referencia de coordenadas en la pestaña "Información" y "Fuente" de las propiedades de la capa.
+
+- __Ejercicio 3. Cambia el SRC para el lienzo__. Teniendo ambas fuentes cargadas, cambia el SRC global sobre la marcha (*on-the-fly*), sin transformar las fuentes propiamente. Si estás en EPSG:4326, prueba con EPSG:32619, y viceversa. También prueba a colocar EPSG3857. Determina si se notan cambios; te convendrán alejarte mucho para ver posibles deformaciones.
+
+---
+
+## Ejercicios en QGIS (cont.)
+
+- __Ejercicio 4. Transforma una fuente de un SRC a otro__. Con independencia de si es ráster o vectorial, esto lo consigues así:
+    - Haz clic derecho en la capa que quieres transformar.
+    - Ve a "Exportar>Guardar&nbsp;&nbsp;como...". Si es vectorial, será "Exportar>Guardar&nbsp;&nbsp;como...". Te aparecerá un cuadro de diálogo ("cuadro de configuraciones"). En este cuadro, define lo siguiente:
+    - En la caja `Formato`, elige un formato de salida. Si se trata de un ráster, elige GeoTIFF.
+    - En la caja `Nombre de archivo`, presiona sobre los puntos suspensivos a la derecha (es preferible ir a los puntos suspensivos, que escribir un nombre en la caja, porque con los puntos suspensivos sabrás dónde se guarda). Elige una ruta y un nombre de archivo (no tienes que especificar extensión).
+    - Presiona `Guardar`. Esto llevará de nuevo al cuadro de diálogo anterior.
+
+---
+
+## Ejercicios en QGIS (cont.)
+
+- __Ejercicio 4__ (cont.).
+    - Elige un SRC distinto. Si la capa estaba originalmente en EPSG:4326 (no proyectado, basado en WGS84), elige EPSG:32619  (proyectado, basado en WGS84, proyección UTM, zona 19N). Si la capa estaba originalmente en EPSG:32619 (proyectado, basado en WGS84, proyección UTM, zona 19N) elige EPSG:4326 (no proyectado, basado en WGS84).
+    - Finalmente, presiona `Aceptar`.
+    - Explora cambios, por ejemplo, fíjate en los SRC de cada capa, y nota cualquier otro cambio.
+
+- __Ejercicio 5. Genera una salida escalada__ o "composición" impresa. A partir de una salida estilizada, genera una salida "lista para imprimir" usando la herramienta "Composiciones". Coloca los elementos básicos: barra de escala, leyenda, cuadrícula, vista general.
+
+---
+
+## Ejercicios en QGIS (cont.)
+
+- __Ejercicio 6. Representa un mapa temático__. Usa una capa de puntos, una de polígonos, y una ráster para representar mapas temáticos aplicando simbología específica, preferiblemente mediante el panel de estilos (explora la diferencia entre dicho panel y el diálogo "Propiedades de capa"). Básate en el repo usado hasta ahora: ["Material de apoyo de la asignatura "Análisis Espacial", Maestría en Geografía, Teledetección y Ciencias de la Información Geográfica"](https://github.com/maestria-geotel-master/material-de-apoyo). Puedes usar cualquiera de los vectoriales que contengan alguna variable representable. El archivo `divisionRD.gpkg` es de polígonos con variables cualitativas nominales; el archivo `onamet_temp_anual.gpkg` es de puntos, y tiene varias cuantitativas de temperatura; el archivo `dem_srtm_remuestreado.tif` es un modelo digital de elevaciones de baja resolución que abarca toda la isla.
+
+- __Ejercicio 7. Realiza una unión (*join*) entre fuentes de datos geoespaciales__. Usa las siguientes fuentes para realizar una unión de datos. Como fuente "objetivo" usa el archivo `divisionRD.gpkg`, y como fuente a unir usa el archivo `pop_adm3.csv` (tendrás que abrirlo primero como "Texto delimitado" en QGIS, ver ejercicio 1.c, pero especificando que no tiene geometría mediante la opción "Ninguna geometría (tabla sólo de atributos)"). Una vez realices la unión, guarda la capa objetivo en un archivo nuevo, para preservar la unión de datos.
+
+---
+# Referencias destacadas
+
+Bivand, R. S., Pebesma, E., & Gómez-Rubio, V. (2013). Applied Spatial Data Analysis with R. Springer New York. https://doi.org/10.1007/978-1-4614-7618-4
+
+Olaya, V. (2020). Sistemas de Información Geográfica. https://volaya.github.io/libro-sig/
+
+Lovelace, R., Nowosad, J., & Muenchow, J. (2019). Geocomputation with R. Chapman and Hall/CRC. https://r.geocompx.org/
+
+Dorman, M., Graser A., Nowosad, J. & Lovelace, R. (2019). Geocomputation with Python. Chapman and Hall/CRC. https://py.geocompx.org/

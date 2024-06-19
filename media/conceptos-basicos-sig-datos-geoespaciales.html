@@ -25,7 +25,7 @@ class: center, middle, inverse, title-slide
 ### Universidad Autónoma de Santo Domingo (UASD)
 ]
 .date[
-### 2024-06-17 (updated: 2024-06-18)
+### 2024-06-17 (updated: 2024-06-19)
 ]
 
 ---
@@ -40,7 +40,7 @@ background-image: url(img/fondo.jpg)
 ## Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial
 ### *José Martínez*
 ### Universidad Autónoma de Santo Domingo (UASD)
-#### 2024-06-17
+#### 2024-06-19
 
 
 # Modelos de datos geoespaciales
@@ -93,7 +93,11 @@ Fuente: Olaya (2020)
 
 ## ¿Cómo ver un sistema de referencia en QGIS?
 
-- En QGIS, el término elegido es "Sistema de Referencia de Coordenadas", para elegir el sistema de coordenadas. Esto incluye, de manera implícita, elegir una proyección y un Datum. Normalmente, puedes cambiar "on-the-fly" el SRC.
+- En QGIS, el término elegido es "Sistema de Referencia de Coordenadas", para elegir el sistema de coordenadas. Esto incluye, de manera implícita, elegir una proyección y un Datum.
+
+- Normalmente, puedes cambiar *on-the-fly* el SRC del lienzo.
+
+- Para cambiar el SRC de una capa específica, necesitas realizar una operación a dicha capa, que forma parte de un ejercicio del curso.
 
 - Hay varias formas para acceder a la definición del SRC, pero la más sencilla es usando el botón que simula un globo en la esquina inferior derecha.
 
@@ -103,11 +107,19 @@ Fuente: Olaya (2020)
 
 # ¿Y en R?
 
-- El argumento a prestar atención comúnmente es `crs`.
+- Para definir un CRS, el argumento a prestar atención en toda función, comúnmente es `crs`.
 
-- Es habitual encontrar este argumento en funciones que utilizan objetos *simple features*, que son manejados por el paquete `sf`.
+- Vectorial:
 
-- Comúnmente, para transformar datos, necesitamos utilizar una función para ello. En el paquete `sf`, la función es `st_transform`.
+  - Es habitual encontrar este argumento en funciones que utilizan objetos *simple features*, que son manejados por el paquete `sf`.
+  
+  - Comúnmente, para transformar datos, necesitamos utilizar una función para ello. En el paquete `sf`, la función es `st_transform`.
+
+- Ráster:
+
+  - En otros paquetes, como `terra` y `raster`, así como en `stars`, el sistema de referencia se puede ver al invocar nuevamente el ráster; R normalmente imprime un resumen que incluye el sistema de referencia, y si no tiene, lo suele especificar con el valor `NA`.
+  
+  - Para transformar, igualmente se debe buscar el argumento `crs` dentro de las funciones diseñadas para transformar.
 
 ---
 
@@ -116,7 +128,7 @@ Fuente: Olaya (2020)
 ---
 
 class: center, bottom
-&lt;div style="background-image: url(img/capas.png); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"&gt;
+&lt;div style="background-image: url(img/capas.jpg); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"&gt;
 &lt;/div&gt;
 Fuente: Olaya (2020)
 
@@ -151,13 +163,27 @@ Fuente: Olaya (2020)
 
 ---
 
-
 class: center, bottom
-&lt;div style="background-image: url(img/espectro.jpg); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"&gt;
+&lt;div style="background-image: url(img/espectro-propiedades.png); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"&gt;
 &lt;/div&gt;
-Fuente: Olaya (2020)
+Fuente: Wikipedia
 
 ---
+
+class: center, bottom
+&lt;div style="background-image: url(img/espectro.png); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"&gt;
+&lt;/div&gt;
+Fuente: Wikipedia
+
+---
+
+class: center, bottom
+&lt;div style="background-image: url(img/ventanas-atmosfericas.png); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"&gt;
+&lt;/div&gt;
+Fuente: Wikipedia
+
+---
+
 
 class: center, bottom
 &lt;div style="background-image: url(img/distintas-resoluciones.jpg); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"&gt;
@@ -173,53 +199,76 @@ class: center, bottom
 
 ---
 
+## Algunos ejemplos de resoluciones muy altas
+
+- Visitar: https://explore.maxar.com/30-cm-Leader.html
+
+- Visitar: https://apollomapping.com/
+
+- Visitar: https://www.skyfi.com/
+
+- Ver: https://x.com/Codie_Sanchez/status/1793274136573215191
+
+&lt;div style="text-align: center;"&gt;
+  &lt;img src="img/ejemplo-de-ia.jpg" width="50%"&gt;
+&lt;/div&gt;
+
+---
+
 class: center, bottom
 &lt;div style="background-image: url(img/gnss-diy-um980.jpg); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"&gt;
 &lt;/div&gt;
 
 ---
 
-# Tu turno
 
-Te dejo dos ejercicios de aula a continuación. Este es un buen momento para que uses el ChatGPT. Pregúntale cómo hacerlo. Para interactuar con dicha herramienta en el contexto de nuestro tema, te recomiendo lo siguiente:
+# Qué herramientas tienen QGIS y R para manejar datos ráster y vectoriales
 
-- Concisión. 
-
-- Agilidad. No pierdas tiempo intentando conseguir la mejor ortografía ni la mejor redacción. Las palabras clave, y un "cierto orden", son más importantes. 
-
-- Precisión en lo que se pregunta.
-
-- Mejor dar órdenes.
+# &lt;center&gt;**"Hay dos tipos de personas, 'rásters' y 'vectoriales'"**&lt;/center&gt;
 
 ---
 
-## En QGIS
+## Bibliotecas GDAL/OGR, PROJ, GEOS
 
-- Carga fuentes de datos. Puedes usar las fuentes que encontrarás en el directorio `data` de este repo: https://github.com/maestria-geotel-master/material-de-apoyo. Vas a necesitar descargar los datos desde GitHub (no necesitas cuenta en GitHub para ello), colocarlo en tu PC y continuar.
-
-   - Realiza el ejercicio para una fuente vectorial de tu elección. Las que terminan en `.gpkg` son archivos de formato GeoPackage. También podrías considerar las que terminan en `.csv` como fuentes vectoriales, al menos en este caso.
-   - Haz lo mismo para una fuente ráster. Las que terminan en `.tif` son ráster.
-   - Si quieres usar fuentes tuyas, u otras que encuentres en línea y que sean de tu interés, sería perfecto.
-   - Explora su sistema de referencia de coordenadas en la pestaña "Información" y "Fuente" de las propiedades de la capa.
-   - Más detalles, en el aula.
+- [**GDAL/OGR**](https://github.com/OSGeo/gdal): C/C++, para lectura/escritura de datos raster y vectoriales.
+- [**PROJ**](https://github.com/OSGeo/PROJ): C++, manejo de proyecciones y transformaciones cartográficas.
+- [**GEOS**](https://github.com/libgeos/geos): C/C++ operaciones espaciales, geométricas y topológicas en datos vectoriales.
 
 ---
 
-## En QGIS (cont.)
-
-- Teniendo ambas fuentes cargadas, cambia el SRC global sobre la marcha (*on-the-fly*), sin transformar las fuentes propiamente. Determina si se notan cambios.
-
-- Intenta transformar una fuente de un SRC a otro. Con independencia de si es ráster o vectorial, esto lo podrás hacer en `Clic&amp;nbsp;derecho&amp;nbsp;a&amp;nbsp;la capa&gt;Exportar&gt;Guardar&amp;nbsp;objetos&amp;nbsp;como`.
+class: center, bottom
+&lt;div style="background-image: url(img/repo-zonal-statistics.png); background-size: contain; background-position: center; background-repeat: no-repeat; height: 100%; width: 100%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"&gt;
+&lt;/div&gt;
 
 ---
 
-## En R
+## ¿Cómo se usan en R como QGIS?
 
-- Realicemos el tutorial1: https://geofis.shinyapps.io/tutorial1/
+- **R**: los paquetes `sf`, `stars`, `raster` y `terra` utilizan GDAL/OGR, PROJ, GEOS en todas sus operaciones, especialmente el primero.
 
-- Repite lo mismo que hiciste para QGIS, pero en R, pidiendo ayuda a alguna inteligencia artificial.
+- **QGIS**: Usa estas bibliotecas para cualquier operación de lectura, transformación e interoperabilidad de datos, tanto para raster como vectoriales.
 
 ---
+
+# Paquetes en R
+
+### Paquete `raster`
+- **Desarrollo y Soporte**: Paquete más antiguo.
+- **Funcionalidad**: Lectura, escritura, manipulación y análisis de datos raster.
+- **Limitaciones**: Manejo de grandes datos y rendimiento.
+- **Compatibilidad**: Amplia variedad de formatos a través de GDAL.
+
+### Paquete `terra`
+- **Desarrollo y Soporte**: Sucesor moderno de `raster`.
+- **Funcionalidad**: Mejor manejo de grandes datos y rendimiento.
+- **Mejoras**: Supera limitaciones de `raster`, API similar.
+- **Compatibilidad**: Soporte GDAL.
+
+### Paquete `stars`
+- **Desarrollo y Soporte**: Parte de tidyverse.
+- **Funcionalidad**: Manejo de datos raster y vectoriales, sintaxis tidyverse.
+- **Mejoras**: Datos multidimensionales (tiempo, bandas).
+- **Compatibilidad**: Integración con tidyverse, soporte de múltiples formatos.
 
 # Referencias destacadas
 

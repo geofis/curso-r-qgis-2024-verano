@@ -48,6 +48,16 @@ if (grepl('gfm', output_format)) {
 }
 ```
 
+# Presentaciones de diapositivas incluidas en este repo:
+
+- [Motivación](https://geofis.github.io/curso-r-qgis-2024-verano/media/motivacion.html)
+
+- [Introducción al análisis geoespacial](https://geofis.github.io/curso-r-qgis-2024-verano/media/introduccion-analisis-geoespacial.html)
+
+- [Conceptos básicos de SIG y datos geoespaciales](https://geofis.github.io/curso-r-qgis-2024-verano/media/conceptos-basicos-sig-datos-geoespaciales.html)
+
+- 
+
 ***
 
 ## Programa

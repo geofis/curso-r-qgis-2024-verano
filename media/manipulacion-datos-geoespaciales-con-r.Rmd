@@ -1,0 +1,83 @@
+---
+title: "Manipulación de datos geoespaciales con R"
+subtitle: "Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial"
+author: "José Martínez"
+institute: "Universidad Autónoma de Santo Domingo (UASD)"
+date: "2024-06-17 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+class: center, middle
+background-image: url(img/fondo.jpg)
+
+# Manipulación de datos geoespaciales con R
+## Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial
+### *José Martínez*
+### Universidad Autónoma de Santo Domingo (UASD)
+#### 2024-06-19
+
+---
+
+# Tu turno
+
+## Pide ayuda al ChatGPT
+
+Desde la siguiente diapositiva en adelante, verás varios ejercicios de aula. Este es un buen momento para que uses el ChatGPT. Pregúntale cómo hacerlo. Para interactuar con dicha herramienta en el contexto de nuestro tema, te recomiendo lo siguiente:
+
+- Concisión. 
+
+- Agilidad. No pierdas tiempo intentando conseguir la mejor ortografía ni la mejor redacción. Las palabras clave, y un "cierto orden", son más importantes. 
+
+- Precisión en lo que se pregunta.
+
+- Mejor dar órdenes.
+
+- Truco: pídele que te documente código informático, que te lo explique.
+
+---
+
+## Ejercicios en R + RStudio
+
+- Primero lo primero (es importante, me gasto una diapo y todo en esto), cuando accedas a tu cuenta en el servidor RStudio, configura lo siguiente:
+
+  - Menú Tools>Global Options>R General>Workspace, desmarca `Restore .RData into workspace at startup:`, y en la opción `Save workspace to .RData on exit:` elige `Never`.
+  
+      <img src="img/configuracion-rstudio-importante.jpg" style="width: 75%" />
+  - "Yo podía hacerlo por ti, pero preferí que lo hicieras tú, dado que para garantizar la reproducibilidad de análisis, este paso es importante". Firmado: tu administrador del servidor de programación.
+
+---
+
+## Ejercicios en R + RStudio (cont.)
+
+- __Ejercicio 0. Realicemos el tutorial1__: https://geofis.shinyapps.io/tutorial1/
+
+- __Ejercicio 1. Carga fuentes de datos ráster y vectorial (equivale al ejercicio 1 de QGIS).__
+
+- __Ejercicio 2. Explora el SRC de capas (equivale al ejercicio 2 de QGIS).__
+
+- __Ejercicio 3. Transforma una fuente de un SRC a otro (equivale al ejercicio 4 de QGIS).__
+
+- __Ejercicio 4. Representa un mapa temático (equivale al ejercicio 6 de QGIS).__
+
+- __Ejercicio 5. Realiza una unión (*join*) entre fuentes de datos geoespaciales (equivale al ejercicio 6 de QGIS).__
+---
+
+# Referencias destacadas
+
+Bivand, R. S., Pebesma, E., & Gómez-Rubio, V. (2013). Applied Spatial Data Analysis with R. Springer New York. https://doi.org/10.1007/978-1-4614-7618-4
+
+Olaya, V. (2020). Sistemas de Información Geográfica. https://volaya.github.io/libro-sig/
+
+Lovelace, R., Nowosad, J., & Muenchow, J. (2019). Geocomputation with R. Chapman and Hall/CRC. https://r.geocompx.org/
+
+Dorman, M., Graser A., Nowosad, J. & Lovelace, R. (2019). Geocomputation with Python. Chapman and Hall/CRC. https://py.geocompx.org/

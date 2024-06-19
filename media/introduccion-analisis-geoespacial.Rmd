@@ -24,7 +24,7 @@ background-image: url(img/fondo.jpg)
 ## Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial
 ### *José Martínez*
 ### Universidad Autónoma de Santo Domingo (UASD)
-#### 2024-06-17
+#### 2024-06-18
 
 
 ---
