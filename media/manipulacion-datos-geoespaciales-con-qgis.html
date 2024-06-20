@@ -25,7 +25,7 @@ class: center, middle, inverse, title-slide
 ### Universidad Autónoma de Santo Domingo (UASD)
 ]
 .date[
-### 2024-06-17 (updated: 2024-06-19)
+### 2024-06-17 (updated: 2024-06-20)
 ]
 
 ---
@@ -127,20 +127,17 @@ Desde la siguiente diapositiva en adelante, verás varios ejercicios de aula. Es
 
 ## Ejercicios en QGIS (cont.)
 
-- __Ejercicio 6. Representa un mapa temático__. Usa una capa de puntos, una de polígonos, y una ráster para representar mapas temáticos aplicando simbología específica, preferiblemente mediante el panel de estilos (explora la diferencia entre dicho panel y el diálogo "Propiedades de capa"). Básate en el repo usado hasta ahora: ["Material de apoyo de la asignatura "Análisis Espacial", Maestría en Geografía, Teledetección y Ciencias de la Información Geográfica"](https://github.com/maestria-geotel-master/material-de-apoyo). Puedes usar cualquiera de los vectoriales que contengan alguna variable representable. El archivo `divisionRD.gpkg` es de polígonos con variables cualitativas nominales; el archivo `onamet_temp_anual.gpkg` es de puntos, y tiene varias cuantitativas de temperatura; el archivo `dem_srtm_remuestreado.tif` es un modelo digital de elevaciones de baja resolución que abarca toda la isla.
-
-- __Ejercicio 7. Realiza una unión (*join*) entre fuentes de datos geoespaciales__. Usa las siguientes fuentes para realizar una unión de datos. Como fuente "objetivo" usa el archivo `divisionRD.gpkg`, y como fuente a unir usa el archivo `pop_adm3.csv` (tendrás que abrirlo primero como "Texto delimitado" en QGIS, ver ejercicio 1.c, pero especificando que no tiene geometría mediante la opción "Ninguna geometría (tabla sólo de atributos)"). Una vez realices la unión, guarda la capa objetivo en un archivo nuevo, para preservar la unión de datos.
+- __Ejercicio 6. Representa un mapa temático__. Usa una capa de puntos, una de polígonos, y una ráster para representar mapas temáticos aplicando simbología específica, preferiblemente mediante el panel de estilos (explora la diferencia entre dicho panel y el diálogo "Propiedades de capa"). Básate en el repo usado hasta ahora: ["Material de apoyo de la asignatura "Análisis Espacial", Maestría en Geografía, Teledetección y Ciencias de la Información Geográfica"](https://github.com/maestria-geotel-master/material-de-apoyo). Puedes usar cualquiera de los vectoriales que contengan alguna variable representable.
+    - Capa de polígonos: archivo `divisionRD.gpkg` representa la división de RD en tres capas, regional, provincial y municipal. Sólo tiene variables cualitativas nominales, usa la columna `TOPONIMIA` para representar una categorización.
+    - Capa de puntos: archivo `onamet_temp_anual.gpkg`, representa la temperatura promedio mensual y anual de 72 estaciones de ONAMET. Estos datos no tienen control de calidad, y forman parte de un ejercicio más bien académico. No uses estos datos en estudios posteriores, sólo empléalos como fuente en este ejercicio.
+    - Capa ráster: archivo `dem_srtm_remuestreado.tif`, es un modelo digital de elevaciones del Shuttle Radar Topography Mission (SRTM), remuestreado a baja resolución, que abarca toda la isla.
 
 ---
-# Referencias destacadas
 
-Bivand, R. S., Pebesma, E., &amp; Gómez-Rubio, V. (2013). Applied Spatial Data Analysis with R. Springer New York. https://doi.org/10.1007/978-1-4614-7618-4
+- __Ejercicio 7. Etiquetado, información__. Usa la herramienta de etiquetado para colocar, a las provincias o a las estaciones de ONAMET, un rótulo identificador basado en un campo que te parezca útil; por ejemplo, en la capa de provincias, un campo idóneo para rotular es `TOPONIMIA`, aunque algunos nombres son largos, y tendrás que usar alguna estrategia de salto de línea para esos casos. Adicionalmente, usa la herramienta `Identificador de objetos especiales` (herramienta `i`), e instala y usa el complemento `Value Tool`, para explorar los valores de los elementos representados. Con la primera, podrás explorar los atributos de capas vectoriales y los valores de las celdas en capas ráster, mientras que con la segunda podrás explorar valores de celdas en capas ráster de manera interactiva.
 
-Olaya, V. (2020). Sistemas de Información Geográfica. https://volaya.github.io/libro-sig/
+- __Ejercicio 8. Realiza una unión (*join*) entre fuentes de datos geoespaciales__. Usa las siguientes fuentes para realizar una unión de datos. Como fuente "objetivo" usa el archivo `divisionRD.gpkg`, y como fuente a unir usa el archivo `pop_adm3.csv` (tendrás que abrirlo primero como "Texto delimitado" en QGIS, ver ejercicio 1.c, pero especificando que no tiene geometría mediante la opción "Ninguna geometría (tabla sólo de atributos)"). Una vez realices la unión, guarda la capa objetivo en un archivo nuevo, para preservar la unión de datos.
 
-Lovelace, R., Nowosad, J., &amp; Muenchow, J. (2019). Geocomputation with R. Chapman and Hall/CRC. https://r.geocompx.org/
-
-Dorman, M., Graser A., Nowosad, J. &amp; Lovelace, R. (2019). Geocomputation with Python. Chapman and Hall/CRC. https://py.geocompx.org/
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

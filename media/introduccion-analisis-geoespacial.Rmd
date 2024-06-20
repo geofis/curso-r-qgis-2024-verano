@@ -92,13 +92,13 @@ La **inferencia estadística para estos procesos espaciales es a menudo un desaf
 - **Fotogrametría**
 - **Observación de la Tierra**
 - **Tecnología geoespacial**
-- **Otras técnicas analíticas específicas**
+- **Técnicas analíticas específicas de análisis de datos geoespaciales**
     1. Análisis de proximidad
     2. Análisis de superficies
     3. Análisis de redes
-    4. Estadísticas espaciales
-    5. **Modelado espacial**
-    6. **Geoestadística**
+    4. __Estadísticas espaciales, análisis exploratorio de datos geoespaciales__
+    5. **Modelización espacial** (vecindad, pesos espaciales, pruebas de autocorrelación espacial, ajuste de modelos para predecir o explorar asociación)
+    6. **Interpolación y geoestadística** (técnicas de interpolación no geoestadísticas, variograma, técnicas de interpolación geoestadísticas-kriging-, predicción)
 ---
 
 ### Cartografía
