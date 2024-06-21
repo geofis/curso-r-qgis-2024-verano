@@ -56,7 +56,15 @@ if (grepl('gfm', output_format)) {
 
 - [Conceptos básicos de SIG y datos geoespaciales](https://geofis.github.io/curso-r-qgis-2024-verano/media/conceptos-basicos-sig-datos-geoespaciales.html)
 
-- 
+- [Manipulación de datos geoespaciales con QGIS](https://geofis.github.io/curso-r-qgis-2024-verano/media/manipulacion-datos-geoespaciales-con-qgis.html)
+
+- [Manipulación de datos geoespaciales con R](https://geofis.github.io/curso-r-qgis-2024-verano/media/manipulacion-datos-geoespaciales-con-r.html)
+
+- [Obtención de datos geoespaciales desde la nube](https://geofis.github.io/curso-r-qgis-2024-verano/media/obtencion-de-datos-geoespaciales-desde-la-nube.html)
+
+- [Análisis espacial](https://geofis.github.io/curso-r-qgis-2024-verano/media/analisis-espacial.html)
+
+- [Recapitulando](https://geofis.github.io/curso-r-qgis-2024-verano/media/recapitulando.html)
 
 ***
 

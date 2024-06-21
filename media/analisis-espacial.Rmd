@@ -1,0 +1,86 @@
+---
+title: "Análisis espacial"
+subtitle: "Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial"
+author: "José Martínez"
+institute: "Universidad Autónoma de Santo Domingo (UASD)"
+date: "2024-06-17 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+class: center, middle
+background-image: url(img/fondo.jpg)
+
+# Análisis espacial
+## Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial
+### *José Martínez*
+### Universidad Autónoma de Santo Domingo (UASD)
+#### 2024-06-19
+
+---
+
+# Métodos de análisis de datos geoespaciales
+
+---
+
+## Estadística zonal
+
+- QGIS. Directamente en la aplicación.
+
+- R. Servidor.
+---
+
+## Interpolación y geoestadística
+ 
+- Técnicas de interpolación no geoestadísticas.
+
+- Técnicas de interpolación geoestadísticas.
+    - Variograma: https://www.youtube.com/watch?v=SJLDlasDLEU
+    - Técnicas de interpolación geoestadísticas, kriging: 
+    - Ejemplos: https://github.com/maestria-geotel-master/material-de-apoyo/blob/master/ref/datos-puntuales-geoestadistica.md
+
+
+---
+
+## Modelización espacial
+
+- Vecindad y pesos espaciales: https://github.com/maestria-geotel-master/material-de-apoyo/blob/master/ref/vecindad.md
+- Pruebas de autocorrelación espacial, indicador global y locar de autocorrelación, *I* de Moran:
+    - Ejemplos:
+        - https://github.com/maestria-geotel-master/material-de-apoyo/blob/master/ref/autocorrelacion.md
+        - (página 12 y siguientes) https://peercommunityjournal.org/item/10.24072/pcjournal.157.pdf
+        - (LISA maps, y valores de concentración) https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0208780
+        - https://github.com/biogeografia-202202/material-de-apoyo/blob/master/practicas/demos-personalizadas/
+        - https://www.youtube.com/watch?v=vS4Xm0PRxPM&list=PLDcT2n8UzsCRDqjqSeqHI1wsiNOqpYmsJ&index=21
+
+---
+
+## Modelización espacial
+
+- Ajuste de modelos para predecir o explorar asociación:
+    - Ejemplos:
+        - https://github.com/maestria-geotel-master/material-de-apoyo/blob/master/ref/modelizacion-datos-espaciales-poligonales.md
+        - (página 14) https://peercommunityjournal.org/item/10.24072/pcjournal.157.pdf
+
+---
+
+# Referencias destacadas
+
+Bivand, R. S., Pebesma, E., & Gómez-Rubio, V. (2013). Applied Spatial Data Analysis with R. Springer New York. https://doi.org/10.1007/978-1-4614-7618-4
+
+Olaya, V. (2020). Sistemas de Información Geográfica. https://volaya.github.io/libro-sig/
+
+Lovelace, R., Nowosad, J., & Muenchow, J. (2019). Geocomputation with R. Chapman and Hall/CRC. https://r.geocompx.org/
+
+Dorman, M., Graser A., Nowosad, J. & Lovelace, R. (2019). Geocomputation with Python. Chapman and Hall/CRC. https://py.geocompx.org/
+
+Isaaks, E. H., & Srivastava, M. (1989). Applied geostatistics.

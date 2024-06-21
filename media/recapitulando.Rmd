@@ -1,0 +1,53 @@
+---
+title: "Recapitulando (2024-06-21)"
+subtitle: "Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial"
+author: "José Martínez"
+institute: "Universidad Autónoma de Santo Domingo (UASD)"
+date: "2024-06-17 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+class: center, middle
+background-image: url(img/fondo.jpg)
+
+# Recapitulando (2024-06-21)
+## Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial
+### *José Martínez*
+### Universidad Autónoma de Santo Domingo (UASD)
+#### 2024-06-19
+
+---
+
+# ¿Qué vimos?
+
+---
+
+# ¿Qué nos faltó?
+
+- QGIS:
+    - Aprender a usar la consola Python.
+    - Explotar la "Caja de herramientas de Procesos".
+    - Geoproceso, por ejemplo, intersectar.
+    - Profundizar en la edición de capas.
+- R:
+    - Profundizar en Tidyverse, especialmente en ggplot2.
+    - Crear una función.
+    - Modelización espacial.
+    - Más geoestadística.
+- Python:
+    - Básicamente, todo.
+    - Aplicar algoritmos de redes neuronales, e.g. U-Net.
+- Google Earth Engine:
+    - Obtener más fuentes de diversos tipos.
+    - Preprocesar más en EE.
+    - Spatial binning.
