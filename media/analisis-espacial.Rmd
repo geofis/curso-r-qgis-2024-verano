@@ -1,5 +1,5 @@
 ---
-title: "Análisis espacial"
+title: "Introducción al análisis espacial"
 subtitle: "Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial"
 author: "José Martínez"
 institute: "Universidad Autónoma de Santo Domingo (UASD)"
@@ -20,7 +20,7 @@ options(htmltools.dir.version = FALSE)
 class: center, middle
 background-image: url(img/fondo.jpg)
 
-# Análisis espacial
+# Introducción al análisis espacial
 ## Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial
 ### *José Martínez*
 ### Universidad Autónoma de Santo Domingo (UASD)
