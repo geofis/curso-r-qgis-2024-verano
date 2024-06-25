@@ -62,7 +62,7 @@ if (grepl('gfm', output_format)) {
 
 - [Obtención de datos geoespaciales desde la nube](https://geofis.github.io/curso-r-qgis-2024-verano/media/obtencion-de-datos-geoespaciales-desde-la-nube.html)
 
-- [Análisis espacial](https://geofis.github.io/curso-r-qgis-2024-verano/media/analisis-espacial.html)
+- [Análisis espacial](https://geofis.github.io/curso-r-qgis-2024-verano/media/analisis-espacial-01.html)
 
 - [Recapitulando](https://geofis.github.io/curso-r-qgis-2024-verano/media/recapitulando.html)
 
