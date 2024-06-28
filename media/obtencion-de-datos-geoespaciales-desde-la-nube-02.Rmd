@@ -1,0 +1,80 @@
+---
+title: "Obtención de datos geoespaciales desde la nube, parte 2"
+subtitle: "Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial"
+author: "José Martínez"
+institute: "Universidad Autónoma de Santo Domingo (UASD)"
+date: "2024-06-17 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(eval = F)
+```
+
+class: center, middle
+background-image: url(img/fondo.jpg)
+
+# Obtención de datos geoespaciales desde la nube, parte 2
+## Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial
+### *José Martínez*
+### Universidad Autónoma de Santo Domingo (UASD)
+#### 2024-06-20
+
+---
+
+# Tu turno
+
+## Pide ayuda al ChatGPT
+
+Desde la siguiente diapositiva en adelante, verás varios ejercicios de aula. Este es un buen momento para que uses el ChatGPT. Pregúntale cómo hacerlo. Para interactuar con dicha herramienta en el contexto de nuestro tema, te recomiendo lo siguiente:
+
+- Concisión. 
+
+- Agilidad. No pierdas tiempo intentando conseguir la mejor ortografía ni la mejor redacción. Las palabras clave, y un "cierto orden", son más importantes. 
+
+- Precisión en lo que se pregunta.
+
+- Mejor dar órdenes.
+
+- Truco: pídele que te documente código informático, que te lo explique.
+
+---
+
+## Google EarthEngine a través del frontend de JavaScript (la aplicación web)
+
+### Serie temporal NDVI 
+
+Convertir archivo divisionRD.gpkg a Shapefile EPSG:4326. Elegir una de las dos modalidades siguientes
+
+- En Bash (Linux):
+
+```{bash}
+ogr2ogr -f "GPKG" -t_srs "EPSG:4326" \
+  -nlt PROMOTE_TO_MULTI \
+  divisionRD_4326.gpkg divisionRD.gpkg
+ogr2ogr -f "ESRI Shapefile" \
+   -lco ENCODING=UTF-8 \
+  provincias.shp divisionRD_4326.gpkg PROVCenso2010
+```
+
+- En R:
+
+```{r}
+library(sf)
+prov <- st_read('divisionRD.gpkg', layer = 'PROVCenso2010')
+prov <- st_transform(prov, 4326)
+st_write(prov, 'provincias.shp', layer_options = "ENCODING=UTF-8")
+```
+
+
+
+---
