@@ -1,0 +1,228 @@
+---
+title: "Análisis espacial (2). Interpolación y geoestadística"
+subtitle: "Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial"
+author: "José Martínez"
+institute: "Universidad Autónoma de Santo Domingo (UASD)"
+date: "2024-06-17 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+class: center, middle
+background-image: url(img/fondo.jpg)
+
+# Análisis espacial (2). Interpolación y geoestadística
+## Introducción a R y QGIS para el análisis geoespacial con apoyo de inteligencia artificial
+### *José Martínez*
+### Universidad Autónoma de Santo Domingo (UASD)
+#### 2024-07-09
+
+---
+
+# Un resto que nos quedó
+
+## Apilado en QGIS
+
+## Porcentajes de cobertura en EE
+
+---
+
+# Interpolación y geoestadística
+
+- Interpolación: Técnica matemática utilizada para **estimar valores desconocidos** entre puntos de datos conocidos, proporcionando una función continua a partir de un conjunto discreto de observaciones.
+
+Geoestadística:  Rama de la estadística que se enfoca en el **análisis de datos espaciales y temporales**, aplicando métodos como el krigeaje para modelar y predecir fenómenos en diversas disciplinas, incluyendo geología, medio ambiente, hidrología, agricultura, epidemiología, y otros campos que manejan datos georreferenciados.
+
+---
+
+## Métodos de interpolación
+
+![](img/metodos-interpolacion.jpg)
+
+En: http://pdi.topografia.upm.es/jjarranz/articulos/Suavizado_DEM.pdf
+---
+
+# Cuarteto de Anscombe
+
+## Datos
+
+```{r}
+data(anscombe)
+anscombe
+```
+
+
+---
+
+## Estadísticos
+
+```{r}
+# Media
+print(sapply(1:8, function(x) mean(anscombe[ , x])), digits = 2)
+
+# Varianza
+print(sapply(1:8, function(x) var(anscombe[ , x])), digits = 2)
+
+# Correlación
+print(sapply(1:4, function(x)
+  cor(anscombe[ , x], anscombe[ , x+4])), digits = 2)
+```
+
+---
+
+## Modelos
+
+```{r}
+lm(x1 ~ y1, anscombe)
+lm(x2 ~ y2, anscombe)
+```
+
+---
+
+## Modelos (cont.)
+
+```{r}
+lm(x3 ~ y3, anscombe)
+lm(x4 ~ y4, anscombe)
+```
+
+---
+
+## Gráficos
+
+```{r, echo=F}
+# op <- par(mfrow=c(1,4), mar = c(0,0,2,3), oma = c(5, 4.2, 0, 0))
+op <- par(mfrow = c(2, 2), mar = c(1, 1, 2.5, 1), oma = c(2, 2, 2, 2))
+with(anscombe, plot(x1, y1, xlab = "", ylab = "", main = bquote(paste(italic(r),
+" = ",.(round(cor(x1, y1),2)))))); abline(3,0.5) 
+with(anscombe, plot(x2, y2, xlab = "", ylab = "",, main = bquote(paste(italic(r),
+" = ",.(round(cor(x2, y2),2)))))); abline(3,0.5) 
+with(anscombe, plot(x3, y3, xlab = "", ylab = "",, main = bquote(paste(italic(r),
+" = ",.(round(cor(x3, y3),2)))))); abline(3,0.5) 
+with(anscombe, plot(x4, y4, xlab = "", ylab = "",, main = bquote(paste(italic(r),
+" = ",.(round(cor(x4, y4),2)))))); abline(3,0.5) 
+mtext(expression(italic(y[1])),side=1, outer = TRUE, line = 3)
+mtext(expression(italic(y[2])),side=2, outer = TRUE, line = 2.6)
+mtext("(a)",side=3, at = -42, line = .5)
+mtext("(b)",side=3, at = -26, line = .5)
+mtext("(c)",side=3, at = -10.3, line = .5)
+mtext("(d)",side=3, at = 5.5, line = .5)
+par(op)
+```
+
+---
+
+# La docena del datasauro
+
+![](img/DinoSequentialSmaller.gif)
+En: https://jumpingrivers.github.io/datasauRus/
+
+---
+
+# Semivariograma, y las limitaciones de la estadística univariada
+
+## Usando la explicación de Isaak
+
+```{r, results='asis', echo=F}
+for (i in 1:13) {
+  cat("---\n\n")
+  cat(paste0("![](img/geostat-isaaks-", sprintf("%02d", i), ".jpg)\n\n"))
+}
+```
+
+
+---
+
+## Usando datos de abundancia y riqueza
+
+(presentación de diapositivas separada)
+
+---
+
+## Buena referencia
+
+- Usa también Python
+
+- [GeostatsPy Python Package](https://github.com/GeostatsGuy/GeostatsPy)
+
+![](img/geostats-guy.jpg)
+
+---
+
+# Kriging, krigeaje o krigeado 
+
+- Definición: método geoestadístico que estima valores en ubicaciones no muestreadas utilizando la covarianza espacial entre los puntos conocidos para proporcionar una predicción óptima y minimizar el error de estimación.
+
+- Desarrollado inicialmente por Daniel Krige y formalizado por Georges Matheron, el krigeaje es una técnica fundamental en la geoestadística para la interpolación espacial.
+
+---
+
+## Algunos métodos de kriging
+
+| Método            | Asume                             | Ventajas                                        | Aplicaciones                           | Ecuación                                                                 |
+|-------------------|-----------------------------------|-------------------------------------------------|---------------------------------------|--------------------------------------------------------------------------|
+| Ordinary Kriging  | Media constante y desconocida     | No requiere media conocida                      | Datos sin información previa          | $\small \hat{Z}(x_0) = \sum_{i=1}^{N} \lambda_i Z(x_i)$|
+| Simple Kriging    | Media constante y conocida        | Cálculo sencillo con media conocida             | Media conocida por estudios previos   | $\small \hat{Z}(x_0) = \mu + \sum_{i=1}^{N} \lambda_i (Z(x_i) - \mu)$|
+| Universal Kriging | Media no constante (tendencia)    | Maneja tendencias espaciales                    | Datos con gradientes conocidos        | $\small \hat{Z}(x_0) = T(x_0) + \sum_{i=1}^{N} \lambda_i (Z(x_i) - T(x_i))$|
+| Regression Kriging| Modelo de regresión y residuos    | Integra variables auxiliares                    | Datos con covariables informativas    | $\small \hat{Z}(x_0) = \beta_0 + \beta_1 x_0 + \sum_{i=1}^{N} \lambda_i e(x_i)$|
+
+---
+
+...donde
+
+- $\hat{Z}(x_0)$: Valor predicho en el punto $x_0$.
+- $Z(x_i)$: Valor de la variable en el punto conocido $x_i$.
+- $\lambda_i$: Peso asignado al punto $x_i$.
+- $\mu$: Media conocida del proceso (en Simple Kriging).
+- $T(x)$: Función de tendencia en Universal Kriging.
+- $\beta_0, \beta_1$: Coeficientes del modelo de regresión en Regression Kriging.
+- $e(x_i)$: Residuos del modelo de regresión en Regression Kriging.
+
+---
+
+# Ejercicios
+
+---
+
+## "Ejercicio" 1. SAGA GIS
+
+- Primero asegurarse de que no se tiene instalado.
+
+- Página de SAGA: https://saga-gis.sourceforge.io/en/index.html
+
+- Página directa de descargas (escoger la versión más reciente; versión 9.5 a 9 de julio de 2024): https://sourceforge.net/projects/saga-gis/files/
+
+- En dicha ruta, el archivo que termina en `_setup.exe` es un instalador el cual, a su vez (y con suerte), crea un icono en el Menú Inicio. El que pone `_x64.zip` es un comprimido con binarios ejecutables que no necesita instalación.
+
+- Vídeo de ayuda: Installing SAGA GIS in QGIS 3.0 or above https://www.youtube.com/watch?v=iTr7fQucqUA
+
+---
+
+## Ejercicio 2. **Plato fuerte** (busca un litro de café)
+
+- Tanto en R, como en SAGA y QGIS, usando distintos de métodos de interpolación, obtén superficies continuas de la variable temperatura promedio anual a partir de [estos datos de precipitación](https://github.com/maestria-geotel-master/material-de-apoyo/blob/master/data/onamet_prec_anual_sf.gpkg) con kriging ordinario y [estos datos de temperatura](https://github.com/maestria-geotel-master/material-de-apoyo/blob/master/data/onamet_temp_anual.gpkg) con kriging por regresión usando como predictor la elevación, siguiendo [este cuaderno](https://github.com/maestria-geotel-master/material-de-apoyo/blob/master/ref/datos-puntuales-geoestadistica.md)
+
+---
+
+# Referencias destacadas
+
+Bivand, R. S., Pebesma, E., & Gómez-Rubio, V. (2013). Applied Spatial Data Analysis with R. Springer New York. https://doi.org/10.1007/978-1-4614-7618-4
+
+Olaya, V. (2020). Sistemas de Información Geográfica. https://volaya.github.io/libro-sig/
+
+Lovelace, R., Nowosad, J., & Muenchow, J. (2019). Geocomputation with R. Chapman and Hall/CRC. https://r.geocompx.org/
+
+Dorman, M., Graser A., Nowosad, J. & Lovelace, R. (2019). Geocomputation with Python. Chapman and Hall/CRC. https://py.geocompx.org/
+
+Isaaks, E. H., & Srivastava, M. (1989). Applied geostatistics.
+
+Pyrcz, M.J., Jo. H., Kupenko, A., Liu, W., Gigliotti, A.E., Salomaki, T., and Santos, J., 2021, GeostatsPy Python Package, PyPI, Python Package Index, https://pypi.org/project/geostatspy/.
