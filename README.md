@@ -25,8 +25,11 @@ Versión HTML (más legible e interactiva),
 - [Obtención de datos geoespaciales desde la
   nube](https://geofis.github.io/curso-r-qgis-2024-verano/media/obtencion-de-datos-geoespaciales-desde-la-nube.html)
 
-- [Análisis
-  espacial](https://geofis.github.io/curso-r-qgis-2024-verano/media/analisis-espacial-01.html)
+- [Análisis espacial
+  (1)](https://geofis.github.io/curso-r-qgis-2024-verano/media/analisis-espacial-01.html)
+
+- [Análisis espacial (2). Interpolación y
+  geoestadística](https://geofis.github.io/curso-r-qgis-2024-verano/media/analisis-espacial-02.html)
 
 - [Recapitulando](https://geofis.github.io/curso-r-qgis-2024-verano/media/recapitulando.html)
 

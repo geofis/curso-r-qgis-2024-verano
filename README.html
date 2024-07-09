@@ -228,7 +228,7 @@ window.initializeCodeFolding = function(show) {
     $(this).detach().appendTo(div);
 
     // add a show code button right above
-    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Code') + '</span>');
+    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Show') + '</span>');
     var showCodeButton = $('<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm code-folding-btn pull-right float-right"></button>');
     showCodeButton.append(showCodeText);
     showCodeButton
@@ -254,7 +254,7 @@ window.initializeCodeFolding = function(show) {
     //   * Change text
     //   * add a class for intermediate states styling
     div.on('hide.bs.collapse', function () {
-      showCodeText.text('Code');
+      showCodeText.text('Show');
       showCodeButton.addClass('btn-collapsing');
     });
     div.on('hidden.bs.collapse', function () {
@@ -457,7 +457,8 @@ display: none;
 <li><p><a href="https://geofis.github.io/curso-r-qgis-2024-verano/media/manipulacion-datos-geoespaciales-con-qgis.html">Manipulación de datos geoespaciales con QGIS</a></p></li>
 <li><p><a href="https://geofis.github.io/curso-r-qgis-2024-verano/media/manipulacion-datos-geoespaciales-con-r.html">Manipulación de datos geoespaciales con R</a></p></li>
 <li><p><a href="https://geofis.github.io/curso-r-qgis-2024-verano/media/obtencion-de-datos-geoespaciales-desde-la-nube.html">Obtención de datos geoespaciales desde la nube</a></p></li>
-<li><p><a href="https://geofis.github.io/curso-r-qgis-2024-verano/media/analisis-espacial-01.html">Análisis espacial</a></p></li>
+<li><p><a href="https://geofis.github.io/curso-r-qgis-2024-verano/media/analisis-espacial-01.html">Análisis espacial (1)</a></p></li>
+<li><p><a href="https://geofis.github.io/curso-r-qgis-2024-verano/media/analisis-espacial-02.html">Análisis espacial (2). Interpolación y geoestadística</a></p></li>
 <li><p><a href="https://geofis.github.io/curso-r-qgis-2024-verano/media/recapitulando.html">Recapitulando</a></p></li>
 </ul>
 <hr />
