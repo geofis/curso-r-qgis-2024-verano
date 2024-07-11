@@ -32,14 +32,14 @@ Versión HTML (más legible e interactiva),
   geoestadística](https://geofis.github.io/curso-r-qgis-2024-verano/media/analisis-espacial-02.html)
 
 - [Análisis espacial (2). Interpolación y geoestadística. Demo con datos
-  puntuales](https://geofis.github.io/curso-r-qgis-2024-verano/blob/main/media/analisis-espacial-02-demo-con-datos-puntuales.md)
+  puntuales](https://github.com/geofis/curso-r-qgis-2024-verano/blob/main/media/analisis-espacial-02-demo-con-datos-puntuales.md)
 
 - [Análisis espacial (3). Autocorrelación
-  espacial](https://geofis.github.io/curso-r-qgis-2024-verano/blob/main/media/analisis-espacial-03.md)
+  espacial](https://github.com/geofis/curso-r-qgis-2024-verano/blob/main/media/analisis-espacial-03.md)
 
 - [Análisis espacial (3). Autocorrelación espacial. Demo de
   autocorrelación con datos
-  ecológicos](https://geofis.github.io/curso-r-qgis-2024-verano/blob/main/media/analisis-espacial-03-demo-con-datos-ecologicos.md)
+  ecológicos](https://github.com/geofis/curso-r-qgis-2024-verano/blob/main/media/analisis-espacial-03-demo-con-datos-ecologicos.md)
 
 - [Recapitulando](https://geofis.github.io/curso-r-qgis-2024-verano/media/recapitulando.html)
 
