@@ -6,7 +6,7 @@ José Martínez
 Versión HTML (más legible e interactiva),
 [aquí](https://geofis.github.io/curso-r-qgis-2024-verano/README.html)
 
-# Presentaciones de diapositivas incluidas en este repo:
+# Presentaciones de diapositivas incluidas en este repo y otros materiales:
 
 - [Motivación](https://geofis.github.io/curso-r-qgis-2024-verano/media/motivacion.html)
 
@@ -30,6 +30,16 @@ Versión HTML (más legible e interactiva),
 
 - [Análisis espacial (2). Interpolación y
   geoestadística](https://geofis.github.io/curso-r-qgis-2024-verano/media/analisis-espacial-02.html)
+
+- [Análisis espacial (2). Interpolación y geoestadística. Demo con datos
+  puntuales](https://geofis.github.io/curso-r-qgis-2024-verano/blob/main/media/analisis-espacial-02-demo-con-datos-puntuales.md)
+
+- [Análisis espacial (3). Autocorrelación
+  espacial](https://geofis.github.io/curso-r-qgis-2024-verano/blob/main/media/analisis-espacial-03.md)
+
+- [Análisis espacial (3). Autocorrelación espacial. Demo de
+  autocorrelación con datos
+  ecológicos](https://geofis.github.io/curso-r-qgis-2024-verano/blob/main/media/analisis-espacial-03-demo-con-datos-ecologicos.md)
 
 - [Recapitulando](https://geofis.github.io/curso-r-qgis-2024-verano/media/recapitulando.html)
 
