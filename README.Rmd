@@ -48,7 +48,7 @@ if (grepl('gfm', output_format)) {
 }
 ```
 
-# Presentaciones de diapositivas incluidas en este repo:
+# Presentaciones de diapositivas incluidas en este repo y otros materiales:
 
 - [Motivación](https://geofis.github.io/curso-r-qgis-2024-verano/media/motivacion.html)
 
@@ -65,6 +65,12 @@ if (grepl('gfm', output_format)) {
 - [Análisis espacial (1)](https://geofis.github.io/curso-r-qgis-2024-verano/media/analisis-espacial-01.html)
 
 - [Análisis espacial (2). Interpolación y geoestadística](https://geofis.github.io/curso-r-qgis-2024-verano/media/analisis-espacial-02.html)
+
+- [Análisis espacial (2). Interpolación y geoestadística. Demo con datos puntuales](https://geofis.github.io/curso-r-qgis-2024-verano/media/analisis-espacial-02-demo-con-datos-puntuales.md)
+
+- [Análisis espacial (3). Autocorrelación espacial](https://geofis.github.io/curso-r-qgis-2024-verano/media/analisis-espacial-03.md)
+
+- [Análisis espacial (3). Autocorrelación espacial. Demo de autocorrelación con datos ecológicos](https://geofis.github.io/curso-r-qgis-2024-verano/media/demo-autocorrelacion/analisis-espacial-03-demo-con-datos-ecologicos.md)
 
 - [Recapitulando](https://geofis.github.io/curso-r-qgis-2024-verano/media/recapitulando.html)
 

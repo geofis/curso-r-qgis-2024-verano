@@ -25,7 +25,7 @@ class: center, middle, inverse, title-slide
 ### Universidad Autónoma de Santo Domingo (UASD)
 ]
 .date[
-### 2024-06-17 (updated: 2024-07-09)
+### 2024-06-17 (updated: 2024-07-11)
 ]
 
 ---
@@ -313,6 +313,69 @@ En: https://jumpingrivers.github.io/datasauRus/
 
 ---
 
+# Reglas Empíricas para Variogramas
+
+## Conoce tus datos
+
+- Calcula estadísticas básicas: mínimo, máximo, mediana, media, desviación estándar, varianza y asimetría.
+
+- Usa un informe de variograma para mostrar estos datos.
+
+- Crea mapas de dispersión e histogramas.
+
+## Mantén el modelo simple
+
+- Elige el modelo más simple que reproduzca las características esenciales del variograma experimental.
+
+---
+
+## Usa el modelo predeterminado
+
+- Para un análisis inicial, utiliza el variograma lineal por defecto.
+
+- Nota: La cuadrícula de desviación estándar kriging con este variograma no es fiable.
+
+## Anisotropía
+
+- Evita ratios de anisotropía mayores a 3:1 sin justificación física clara.
+
+- Una anisotropía alta sin justificación puede indicar una tendencia en los datos. Considera eliminarla antes.
+
+---
+
+## Prueba y compara modelos
+
+- Genera cuadrículas y mapas de contorno para diferentes modelos de variograma.
+
+- Si las diferencias son mínimas, elige el modelo más simple.
+
+## Rango del variograma
+
+- El rango suele coincidir con el tamaño promedio de las anomalías en los valores Z.
+
+- Usa esta regla si no tienes un variograma experimental fiable.
+
+---
+
+## Variograma fluctuante
+
+- Un variograma experimental que fluctúa alrededor de un valor constante indica que los valores Z no están correlacionados a la escala de muestreo. 
+
+- Necesitarás más datos con un espaciado de muestra más cercano.
+
+## Sill del variograma
+
+- El sill puede aproximarse a la varianza de la muestra si:
+
+  1. Los datos están distribuidos uniformemente.
+
+  2. No hay tendencias significativas.
+
+  3. El área es más de tres veces el rango del variograma.
+
+
+---
+
 # Ejercicios
 
 ---
@@ -331,11 +394,28 @@ En: https://jumpingrivers.github.io/datasauRus/
 
 ---
 
-## Ejercicio 2. **Plato fuerte** (busca un litro de café)
+## Ejercicio 2. Kriging ordinario en SAGA GIS
 
-- Tanto en R, como en SAGA y QGIS, usando distintos de métodos de interpolación, obtén superficies continuas de la variable temperatura promedio anual a partir de [estos datos de precipitación](https://github.com/maestria-geotel-master/material-de-apoyo/blob/master/data/onamet_prec_anual_sf.gpkg) con kriging ordinario y [estos datos de temperatura](https://github.com/maestria-geotel-master/material-de-apoyo/blob/master/data/onamet_temp_anual.gpkg) con kriging por regresión usando como predictor la elevación, siguiendo [este cuaderno](https://github.com/maestria-geotel-master/material-de-apoyo/blob/master/ref/datos-puntuales-geoestadistica.md)
+En SAGA GIS o QGIS, reproduce la parte 1 de [este cuaderno RMarkdown](analisis-espacial-02-cuaderno.Rmd), correspondiente al kriging ordinario (Estudio de caso: precipitación de República Dominicana mediante kriging ordinario), siguiendo la grabación de la sesión de clases.
 
 ---
+
+## Ejercicio 3. Kriging ordinario en R
+
+- En R, reproduce la parte 1 de [este cuaderno RMarkdown](analisis-espacial-02-cuaderno.Rmd), correspondiente al kriging ordinario (Estudio de caso: precipitación de República Dominicana mediante kriging ordinario), siguiendo la grabación de la sesión de clases. Compara los resultados con los obtenidos en SAGA GIS, las ventajas y desventajas de usar R contra SAGA GIS/QGIS.
+
+---
+
+## Ejercicio 4. Kriging por regresión en R
+
+- En R, reproduce la parte 1 de [este cuaderno RMarkdown](analisis-espacial-02-cuaderno.Rmd), correspondiente al kriging por regresión (Estudio de caso: temperatura de República Dominicana mediante kriging universal), siguiendo la grabación de la sesión de clases.
+
+---
+
+## Ejercicio 5. Elige un conjunto de datos y realiza una interpolación con kriging universal o kriging por regresión
+
+---
+
 
 # Referencias destacadas
 
