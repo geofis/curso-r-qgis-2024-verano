@@ -272,19 +272,19 @@ for (i in 1:13) {
 
 ## Ejercicio 2. Kriging ordinario en SAGA GIS
 
-En SAGA GIS o QGIS, reproduce la parte 1 de [este cuaderno RMarkdown](analisis-espacial-02-cuaderno.Rmd), correspondiente al kriging ordinario (Estudio de caso: precipitación de República Dominicana mediante kriging ordinario), siguiendo la grabación de la sesión de clases.
+En SAGA GIS o QGIS, reproduce la parte 1 de [este cuaderno RMarkdown](https://github.com/geofis/curso-r-qgis-2024-verano/blob/main/media/analisis-espacial-02-demo-con-datos-puntuales.md#estudio-de-caso-precipitaci%C3%B3n-de-rep%C3%BAblica-dominicana-mediante-kriging-ordinario), correspondiente al kriging ordinario (Estudio de caso: precipitación de República Dominicana mediante kriging ordinario), siguiendo la grabación de la sesión de clases.
 
 ---
 
 ## Ejercicio 3. Kriging ordinario en R
 
-- En R, reproduce la parte 1 de [este cuaderno RMarkdown](analisis-espacial-02-cuaderno.Rmd), correspondiente al kriging ordinario (Estudio de caso: precipitación de República Dominicana mediante kriging ordinario), siguiendo la grabación de la sesión de clases. Compara los resultados con los obtenidos en SAGA GIS, las ventajas y desventajas de usar R contra SAGA GIS/QGIS.
+- En R, reproduce la parte 1 de [este cuaderno RMarkdown](https://github.com/geofis/curso-r-qgis-2024-verano/blob/main/media/analisis-espacial-02-demo-con-datos-puntuales.md#estudio-de-caso-precipitaci%C3%B3n-de-rep%C3%BAblica-dominicana-mediante-kriging-ordinario), correspondiente al kriging ordinario (Estudio de caso: precipitación de República Dominicana mediante kriging ordinario), siguiendo la grabación de la sesión de clases. Compara los resultados con los obtenidos en SAGA GIS, las ventajas y desventajas de usar R contra SAGA GIS/QGIS.
 
 ---
 
 ## Ejercicio 4. Kriging por regresión en R
 
-- En R, reproduce la parte 1 de [este cuaderno RMarkdown](analisis-espacial-02-cuaderno.Rmd), correspondiente al kriging por regresión (Estudio de caso: temperatura de República Dominicana mediante kriging universal), siguiendo la grabación de la sesión de clases.
+- En R, reproduce la parte 1 de [este cuaderno RMarkdown](https://github.com/geofis/curso-r-qgis-2024-verano/blob/main/media/analisis-espacial-02-demo-con-datos-puntuales.md#estudio-de-caso-temperatura-de-rep%C3%BAblica-dominicana-mediante-kriging-universal), correspondiente al kriging por regresión (Estudio de caso: temperatura de República Dominicana mediante kriging universal), siguiendo la grabación de la sesión de clases.
 
 ---
 
@@ -292,6 +292,15 @@ En SAGA GIS o QGIS, reproduce la parte 1 de [este cuaderno RMarkdown](analisis-e
 
 ---
 
+## Bonus. Diseño de muestreo sistemático y aleatorio.
+
+1. En QGIS, usando la capa de provincias de República Dominicana, elige una provincia y crea un diseño de muestreo sistemático usando una distancia de separación "razonable" (una distancia de separación de menos de 1000 m, podría ser muy denso; podrías usar también criterio de densidad, es decir, número de puntos por unidad de superficie).
+
+2. Realiza un diseño de muestreo espacial estratificado en QGIS.
+  - [Guía para la práctica](https://github.com/geofis/curso-sig-doctorado-2024-verano/blob/main/media/practica-muestreo.md)
+  - [Vídeo demostrativo para realizar esta práctica](https://drive.google.com/file/d/1k6IotOHj6fUkyfi4rSBK6d320TY45KED/view?usp=drive_link)
+
+---
 
 # Referencias destacadas
 
